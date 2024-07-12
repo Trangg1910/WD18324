@@ -10,13 +10,13 @@ class ProductBookController extends Controller
 {
     public function listProduct(){
         $listProduct = DB::table('product')->join('category', 'product.category_id', '=', 'category.id')
-        ->select('product.id', 'product.name', 'product.category_id', 'category.ten_danhmuc', 'product.price')
-        ->orderBy('id', 'desc')->get();
+        ->select('product.id', 'product.name', 'product.category_id', 'category.ten_danhmuc', 'product.price', 'product.view')
+        ->orderBy('view', 'desc')->get();
         if($key = request()->key){
             $listProduct = DB::table('product')->join('category', 'product.category_id', '=', 'category.id')
             ->where('product.name', 'like', '%'.$key.'%')
-            ->select('product.id', 'product.name', 'product.category_id', 'category.ten_danhmuc', 'product.price')
-            ->orderBy('id', 'desc')->get();
+            ->select('product.id', 'product.name', 'product.category_id', 'category.ten_danhmuc', 'product.price', 'product.view')
+            ->orderBy('view', 'desc')->get();
         }
         return view('product/listProduct')->with([
             'listProduct' => $listProduct

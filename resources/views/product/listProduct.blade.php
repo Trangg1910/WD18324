@@ -14,7 +14,7 @@
     <div class="container">
         <h3 class="alert alert-primary">Danh sách sản phẩm</h3>
 
-        <form action="" class="input-group" style="margin-top: 20px; margin-left: 670px; margin-bottom: 10px;">
+        <form action="" class="input-group" style="margin-top: 20px; margin-left: 1050px; margin-bottom: 10px;">
             <div class="form-group">
                 <input type="text" class="form-control" name="key" placeholder="Tìm kiếm theo tên....">
             </div>
@@ -33,6 +33,7 @@
                     <th scope="col">STT</th>
                     <th scope="col">Tên sản phẩm</th>
                     <th scope="col">Danh mục</th>
+                    <th scope="col">Luợt xem</th>
                     <th scope="col">Hành động</th>
                 </tr>
             </thead>
@@ -42,8 +43,8 @@
                         <th scope="row">{{ $key + 1 }}</th>
                         <td>{{ $product->name }}</td>
                         <td>{{ $product->ten_danhmuc }}</td>
+                        <td>{{ $product->view }}</td>
                         <td>
-                            <a href=""><i class="bi bi-clipboard-data-fill text-primary-emphasis px-1"></i></a>
                             <a href="{{ route('product.updateProduct', $product->id) }}"><i
                                     class="bi bi-pencil-square text-warning px-1"></i></a>
                             <a href="{{ route('product.deleteProduct', $product->id) }}"><i
