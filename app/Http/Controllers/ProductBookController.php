@@ -12,9 +12,16 @@ class ProductBookController extends Controller
         $listProduct = DB::table('product')->join('category', 'product.category_id', '=', 'category.id')
         ->select('product.id', 'product.name', 'product.category_id', 'category.ten_danhmuc', 'product.price')
         ->orderBy('id', 'desc')->get();
+        if($key = request()->key){
+            $listProduct = DB::table('product')->join('category', 'product.category_id', '=', 'category.id')
+            ->where('product.name', 'like', '%'.$key.'%')
+            ->select('product.id', 'product.name', 'product.category_id', 'category.ten_danhmuc', 'product.price')
+            ->orderBy('id', 'desc')->get();
+        }
         return view('product/listProduct')->with([
             'listProduct' => $listProduct
         ]);
+
     }
 
     public function addProduct(){

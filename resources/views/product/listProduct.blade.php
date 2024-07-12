@@ -13,8 +13,20 @@
 <body>
     <div class="container">
         <h3 class="alert alert-primary">Danh sách sản phẩm</h3>
-        <a href="{{ route('product.addProduct') }}" class="btn btn-success mb-3 mt-3"><i class="bi bi-person-plus-fill text-white"></i> Thêm
+
+        <form action="" class="input-group" style="margin-top: 20px; margin-left: 670px; margin-bottom: 10px;">
+            <div class="form-group">
+                <input type="text" class="form-control" name="key" placeholder="Tìm kiếm theo tên....">
+            </div>
+            <button type="submit" class="btn btn-primary">
+                <i class="bi bi-search"></i>
+            </button>
+        </form>
+
+        <a href="{{ route('product.addProduct') }}" class="btn btn-success mb-3"><i
+                class="bi bi-person-plus-fill text-white"></i> Thêm
             sản phẩm</a>
+
         <table class="table table-striped table-hover">
             <thead>
                 <tr>
@@ -26,16 +38,18 @@
             </thead>
             <tbody>
                 @foreach ($listProduct as $key => $product)
-                <tr>
-                    <th scope="row">{{ $key + 1 }}</th>
-                    <td>{{ $product->name }}</td>
-                    <td>{{ $product->ten_danhmuc }}</td>
-                    <td>
-                        <a href=""><i class="bi bi-clipboard-data-fill text-primary-emphasis px-1"></i></a>
-                        <a href="{{ route('product.updateProduct', $product->id) }}"><i class="bi bi-pencil-square text-warning px-1"></i></a>
-                        <a href="{{ route('product.deleteProduct', $product->id) }}"><i class="bi bi-trash3-fill text-danger px-1"></i></a>
-                    </td>
-                </tr>
+                    <tr>
+                        <th scope="row">{{ $key + 1 }}</th>
+                        <td>{{ $product->name }}</td>
+                        <td>{{ $product->ten_danhmuc }}</td>
+                        <td>
+                            <a href=""><i class="bi bi-clipboard-data-fill text-primary-emphasis px-1"></i></a>
+                            <a href="{{ route('product.updateProduct', $product->id) }}"><i
+                                    class="bi bi-pencil-square text-warning px-1"></i></a>
+                            <a href="{{ route('product.deleteProduct', $product->id) }}"><i
+                                    class="bi bi-trash3-fill text-danger px-1"></i></a>
+                        </td>
+                    </tr>
                 @endforeach
             </tbody>
         </table>
